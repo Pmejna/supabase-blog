@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import HomeView from '../views/HomeView/HomeView'
 import supabase from 'lib/supabase/supabase';
+import { parameters } from 'types/supabase';
 
 export const getStaticProps = async () => {
 
@@ -12,18 +13,18 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      pageData: posts,
+      postsData: posts,
     }
   }
 }
 
 export interface HomeProps {
-  pageData: any[];
+  postsData: parameters;
 }
 
-const Home: NextPage<HomeProps> = ({pageData}) => {
+const Home: NextPage<HomeProps> = ({postsData}) => {
   return (
-    <HomeView pageData={pageData}/>
+    <HomeView postsData={postsData}/>
   )
 }
 export default Home
